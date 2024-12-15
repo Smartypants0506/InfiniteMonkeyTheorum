@@ -52,8 +52,18 @@ void typeText(const std::string &text) {
     }
 }
 
-int main() {
-    std::ifstream file("C:/absolute/name/of/file/path");
+int main(int argc, char** argv) {
+    if (argc < 1) {
+        std::cerr << "Not enough arguments" << std::endl;
+        return 1;
+    }
+    if (argc > 2) {
+        std::cerr << "Too many arguments" << std::endl;
+        return 1;
+    }
+    
+    
+    std::ifstream file(argv[1]);
     if (!file.is_open()) {
         std::cerr << "Error: Could not open file" << std::endl;
         return 1;
